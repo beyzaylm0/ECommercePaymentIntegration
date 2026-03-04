@@ -1,0 +1,9 @@
+using Microsoft.AspNetCore.Mvc;
+
+namespace ECommercePaymentIntegration.API.Controllers;
+
+[ApiController]
+[Route("api/[controller]")]
+public class ProductsController : ControllerBase
+{
+}
