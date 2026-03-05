@@ -3,6 +3,7 @@ using ECommercePaymentIntegration.Application.ExternalServices;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Moq;
 
 namespace ECommercePaymentIntegration.IntegrationTests;
@@ -67,6 +68,15 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
                 services.Remove(d);
 
             services.AddScoped<IBalanceManagementService>(_ => BalanceServiceMock.Object);
+
+            // Remove the external service health check so /health returns "Healthy" in tests
+            services.Configure<HealthCheckServiceOptions>(options =>
+            {
+                var registration = options.Registrations
+                    .FirstOrDefault(r => r.Name == "balance-management-api");
+                if (registration != null)
+                    options.Registrations.Remove(registration);
+            });
         });
     }
 }
