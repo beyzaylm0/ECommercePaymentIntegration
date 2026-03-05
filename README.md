@@ -1,6 +1,6 @@
 # E-Commerce Payment Integration API
 
-Balance Management servisi ile entegre bir e-ticaret backend API'si. Urun listeleme, fon rezervasyonu ile siparis olusturma ve odeme tamamlama/iptal islemleri sunar.
+Balance Management servisi ile entegre bir e-ticaret backend API'si. Urun listeleme, bakiye bloke ederek siparis olusturma, siparis tamamlama ve iptal islemleri sunar.                                  
 
 ## Mimari
 
